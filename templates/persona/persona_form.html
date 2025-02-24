@@ -1,0 +1,97 @@
+{% extends "base/base.html" %}
+
+{% block title %} 
+    Creación de una Solicitud
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="my-4">Datos del Solicitante</h2>
+    <form method="post" id="solicitud-form">
+        {% csrf_token %}
+        <div class="row">
+            <!-- Formulario Persona (Solicitante) -->
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="id_nombre" class="form-label">Nombre</label>
+                    {{ form.nombre }}
+                    {% if form.nombre.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.nombre.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="id_apellidos" class="form-label">Apellidos</label>
+                    {{ form.apellidos }}
+                    {% if form.apellidos.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.apellidos.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="id_edad" class="form-label">Edad</label>
+                    {{ form.edad }}
+                    {% if form.edad.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.edad.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="id_telefono" class="form-label">Teléfono</label>
+                    {{ form.telefono }}
+                    {% if form.telefono.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.telefono.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="id_email" class="form-label">Email</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.email.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="id_domicilio" class="form-label">Domicilio</label>
+                    {{ form.domicilio }}
+                    {% if form.domicilio.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.domicilio.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-success" type="submit">Enviar</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+    Enlistar Solicitudes
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Tabla de personas solicitantes</h1>
+    <a class="btn btn-success px-3" href="{% url 'adopcion:persona_crear' %}">
+        + crear
+    </a>
+</div>
+{% if form %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">nombre</th>
+            <th scope="col">correo</th>
+            <th scope="col">edad</th>
+            <th scope="col">direccion</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for persona in form %}
+            <tr>
+                <th scope="row"> {{ persona.id }}</th>
+                <td>{{ persona.nombre}} {{ persona.apellidos }}</td>
+                <td>{{ persona.email}}</td>
+                <td>{{ persona.edad}}</td>
+                <td>{{ persona.domicilio}}</td>
+                <td>
+                    {% if request.path == "/adopciones/solicitud/f_listar/" %}
+                        <a href="{% url 'adopcion:f_persona_editar' persona.id %}" class="btn btn-warning">Editar</a>
+                        <a href="{% url 'adopcion:f_persona_eliminar' persona.id %}" class="btn btn-danger">Eliminar</a>
+                    {% else %}
+                        <a href="{% url 'adopcion:persona_editar' persona.id %}" class="btn btn-warning">Editar</a>
+                        <a href="{% url 'adopcion:persona_eliminar' persona.id %}" class="btn btn-danger">Eliminar</a>
+                    {% endif %}
+
+                </td>
+                <!-- <td>
+                    <a class="btn btn-warning" href="{ url 'adopcion:persona_editar' solicituds.id %}">
+                        Editar
+                    </a>
+                    <a class="btn btn-danger" href="{ url 'adopcion:persona_eliminar' solicituds.id %}">
+                        Eliminar
+                    </a>
+                    
+                </td> -->
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h5>No hay Registros de adopciones</h5>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base/base.html" %}
+
+{% block title %} 
+    Creación de una Solicitud
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="post" id="solicitud-form">
+        {% csrf_token %}
+        <h2 class="my-4">Datos de la Adopción</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="id_numero_mascotas" class="form-label">Número de Mascotas</label>
+                    {{ form.numero_mascotas }}
+                    {% if form.numero_mascotas.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.numero_mascotas.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="id_numero_mascotas" class="form-label">Persona solicitante</label>
+                    {{ form.persona }}
+                    {% if form.persona.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.persona.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="id_razones" class="form-label">Razones para Adoptar</label>
+                    {{ form.razones }}
+                    {% if form.razones.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.razones.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-success" type="submit">Enviar</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+    Eliminar una adopcion 
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h2>Desea eliminar el registro de {{ object.persona.nombre }} {{ object.persona.apellidos }}</h2>
+    <button class="btn btn-danger" type="submit">
+    Si eliminar
+    </button>
+    <a class="btn btn-default" href="{% url 'adopcion:adopcion_listar' %}">
+        cancelar
+    </a>
+</form>
+{% endblock %}

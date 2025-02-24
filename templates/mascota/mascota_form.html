@@ -1,0 +1,112 @@
+{% extends "base/base.html" %}
+
+{% block title %} 
+creacion de una mascota
+{% endblock %}
+
+
+{% block content %}
+<form method="post" id="solicitud-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <!-- Formulario Persona (Solicitante) -->
+        <div class="col-md-6"> 
+            <div class="mb-3">
+                <label for="id_nombre" class="form-label">Nombre</label>
+                {{ form.nombre }}
+                {% if form.nombre.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.nombre.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="id_apellidos" class="form-label">Sexo</label>
+                {{ form.sexo }}
+                {% if form.sexo.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.sexo.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="id_edad" class="form-label">Edad Aproximada</label>
+                {{ form.edad_aproximada }}
+                {% if form.edad_aproximada.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.edad_aproximada.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="id_telefono" class="form-label">Fecha de rescate</label>
+                {{ form.fecha_rescate }}
+                {% if form.fecha_rescate.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.fecha_rescate.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="mb-3">
+                <label for="id_email" class="form-label">Dueño</label>
+                {{ form.persona }}
+                {% if form.persona.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.persona.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="d-flex flex-column ">
+                    <label class="">Vacunas</label>
+                        {{form.vacuna}}
+                    {% if form.vacuna.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.vacuna.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="mb-3">
+                <label class="form-label">Foto</label>
+                
+                {{ form.foto }}
+
+                {% if form.foto.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.foto.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-success" type="submit">Enviar</button>
+</form>
+</form>
+{% endblock %}

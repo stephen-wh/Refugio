@@ -1,0 +1,127 @@
+{% extends "base/base.html" %}
+
+{% block title %} 
+    Creación de una Solicitud
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="my-4">Datos del Solicitante</h2>
+    <form method="post" id="solicitud-form">
+        {% csrf_token %}
+        <div class="row">
+            <!-- Formulario Persona (Solicitante) -->
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="id_nombre" class="form-label">Nombre</label>
+                    {{ form2.nombre }}
+                    {% if form2.nombre.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form2.nombre.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="id_apellidos" class="form-label">Apellidos</label>
+                    {{ form2.apellidos }}
+                    {% if form2.apellidos.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form2.apellidos.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="id_edad" class="form-label">Edad</label>
+                    {{ form2.edad }}
+                    {% if form2.edad.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form2.edad.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="id_telefono" class="form-label">Teléfono</label>
+                    {{ form2.telefono }}
+                    {% if form2.telefono.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form2.telefono.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="id_email" class="form-label">Email</label>
+                    {{ form2.email }}
+                    {% if form2.email.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form2.email.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="id_domicilio" class="form-label">Domicilio</label>
+                    {{ form2.domicilio }}
+                    {% if form2.domicilio.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form2.domicilio.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <h2 class="my-4">Datos de la Adopción</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="id_numero_mascotas" class="form-label">Número de Mascotas</label>
+                    {{ form.numero_mascotas }}
+                    {% if form.numero_mascotas.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.numero_mascotas.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="id_razones" class="form-label">Razones para Adoptar</label>
+                    {{ form.razones }}
+                    {% if form.razones.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.razones.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-success" type="submit">Enviar</button>
+    </form>
+</div>
+{% endblock %}

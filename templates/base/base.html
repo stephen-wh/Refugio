@@ -1,0 +1,87 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block extrasstatic %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>{% block title %} Document {% endblock %}</title>
+    <style>
+        .links p a{
+            text-decoration: none;
+            color: gray;
+            transition: 0.5s;
+        }
+        .links p a:hover{
+            font-size: 19px;
+            color: white;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    {% block header %}
+    <div class="bg-dark">
+        <div class="container d-flex justify-content-between py-3">
+        <h4 class="text-white">Refugio</h4>
+        <div class="links d-flex justify-content-center align-content-center align-items-center">
+            <p class="px-2 m-0">
+                <a href="{% url 'mascota:mascota_listar' %}">Mascotas</a>
+                <a href="{% url 'mascota:f_mascota_listar' %}">VF Mascotas</a>
+            </p>
+            <p class="px-2 m-0">
+                <a href="{% url 'adopcion:solicitud_listar' %}">Solicitudes</a>
+                <a href="{% url 'adopcion:f_solicitud_listar' %}">VF Solicitudes</a>
+            </p>
+            <p class="px-2 m-0">
+                <a href="{% url 'adopcion:adopcion_listar' %}">Adopciones</a>
+                <a href="{% url 'adopcion:f_adopcion_listar' %}">VF Adopciones</a>
+            </p>
+            <p class="px-2 m-0">
+                <a href="{% url 'adopcion:persona_listar' %}">Personas</a>
+                <a href="{% url 'adopcion:f_persona_listar' %}">VF Personas</a>
+            </p>
+        </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert-{{ message.level_tag }} p-3 text-center" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="text-darktext-center py-4 " style="min-height: 100vh;">
+        <div class="container">
+            {% block content %}
+                <h2>contenerdor</h2>
+            {% endblock %}
+        </div>
+    </div>
+
+    {% block footer %}
+<footer class="bg-dark text-white text-center py-4 d-flex">
+    <div class="container">
+        <div class="row">
+            green <div class="col-md-4">
+                <h5>Sobre Nosotros</h5>
+                <p>Somos una refugio.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Derechos reservados</h5>
+                <p><i class="fas fa-envelope"></i> wisp@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

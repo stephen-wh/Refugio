@@ -1,0 +1,10 @@
+.links {
+    background: #000;
+    text-decoration: none;
+    color: gray;
+    transition: 1s;
+}
+.links:hover{
+    color: white;
+    transition: 1s;
+}
